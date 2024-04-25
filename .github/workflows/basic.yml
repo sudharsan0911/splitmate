@@ -22,9 +22,9 @@ jobs:
   build-api:
         runs-on: windows-latest
         steps:
-            - run : echo"builind Api"
+            - run : echo "builing Api"
   build-db:
         needs: build
         runs-on: ubuntu-latest
         steps:
-            - run : echo"builind db"
+            - run : echo "builing  db"
