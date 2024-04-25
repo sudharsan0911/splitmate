@@ -10,10 +10,10 @@ jobs:
       - name: Set the value of env vars
         id: step_one
         run: |
-          echo "action_state = blue" >> $GITHUB_ENV
+          echo "action_state=blue" >> $GITHUB_ENV
 
       - name: Use the value of env vars
         id: step_two
         run: |
-          echo "${{ steps.step_one.outputs.action_state }}"
-
+          source $GITHUB_ENV
+          echo $action_state
