@@ -1,19 +1,19 @@
-name : user depicted env vars
+name: user depicted env vars
 
 on:
-   workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
-   custom_GITHUB_ENV :
-        runs-on: ubuntu-latest
-        steps:
-            - name : set the value of env vars
-              id : step_one
-              run: |
-                echo "action_state = blue" >> $GITHUB_ENV
-            
-            - name : use the value of env vars
-              id : step_two
-              run: |
-                echo " ${{ env.action_state }}"
-            
+  custom_GITHUB_ENV:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set the value of env vars
+        id: step_one
+        run: |
+          echo "action_state=blue" >> $GITHUB_ENV
+
+      - name: Use the value of env vars
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}"
+
