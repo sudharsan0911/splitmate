@@ -1,1 +1,28 @@
 
+name: basic workflow demo
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+   
+build-api:
+    runs-on: windows-latest
+    steps:
+        - runs: echo"builind Api"
+build-db:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+        - runs: echo"builind db"
