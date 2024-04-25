@@ -15,5 +15,5 @@ jobs:
             - name : use the value of env vars
               id : step_two
               run: |
-                echo "action_state = ${{ env.action_state }}"
+                echo " ${{ env.action_state }}"
             
