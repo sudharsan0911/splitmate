@@ -2,12 +2,14 @@
 name: basic workflow demo
 
 on:
-  push:
-    branches:
-      - main
+  push: 
+    branches : ["master"]
+    
   pull_request:
-    branches:
-      - main
+    branches : ["master"]
+
+    workflow-dispatch:
+    
 
 jobs:
   build:
