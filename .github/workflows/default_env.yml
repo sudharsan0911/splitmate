@@ -1,0 +1,18 @@
+name : list of all default env vars
+
+on:
+    workflow_dispatch:
+
+jobs:
+    ubuntu-env-vars:
+        runs-on: ubuntu-latest
+        steps:
+            - run : env
+    windows-env-vars:
+        runs-on: windows-latest
+        steps:
+            - run : env
+    macOS-env-vars:
+        runs-on: macOS-latest
+        steps:
+            - run : env
