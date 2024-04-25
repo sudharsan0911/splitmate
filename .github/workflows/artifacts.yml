@@ -1,29 +1,35 @@
-name : artifacts update
+name: artifacts update
+
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
+
 jobs:
-    job1:
-        name: upload artifacts
-        runs-on: ubuntu-latest
-        steps:
-            - name: "create local file"
-                run: |
-                    echo "this a artifact file which is being uploaded for reference" > file.txt
-            
-            - uses: actions/upload-artifact@v2 
-            with:
-                name: my-artifact
-                path: file.txt
-                retention-days : 10
-    job2:
-        name : download artifacts
-        runs-on: ubuntu-latest
-        needs: job1
-        steps:
-            - uses: actions/download-artifact@v2
-              with:
-                    name: my-artifact
-            - runs : cat file.txt
-            
+  job1:
+    name: upload artifacts
+    runs-on: ubuntu-latest
+    steps:
+      - name: create local file
+        run: |
+          echo "this a artifact file which is being uploaded for reference" > file.txt
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: file.txt
+          retention-days: 10
+
+  job2:
+    name: download artifacts
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: my-artifact
+
+      - name: Display content of downloaded file
+        run: cat file.txt
